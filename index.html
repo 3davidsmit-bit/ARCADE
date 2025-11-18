@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Arcade Hub</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<script>
+// Datum en tijd
+function updateDateTime(){
+    const now = new Date();
+    document.getElementById('datetime').textContent = now.toLocaleString();
+}
+setInterval(updateDateTime,1000);
+updateDateTime();
+
+// Dropdown menu
+document.addEventListener('DOMContentLoaded', ()=>{
+    const dropdownBtn = document.querySelector('.dropdown-btn');
+    const dropdownContent = document.querySelector('.dropdown-content');
+
+    dropdownBtn.addEventListener('click', function(e){
+        e.stopPropagation();
+        dropdownContent.classList.toggle('show');
+    });
+
+    window.addEventListener('click', function(){
+        dropdownContent.classList.remove('show');
+    });
+});
+</script>
+
+<header>
+    <div class="dropdown">
+        <button class="dropdown-btn">Home</button>
+        <div class="dropdown-content">
+            <a href="index.html">Home</a>
+            <a href="tic-tac-toe.html">Tic Tac Toe</a>
+            <a href="snake.html">Snake</a>
+            <a href="tetris.html">Tetris</a>
+            <a href="frogger.html">Frogger</a>
+        </div>
+    </div>
+    <div id="datetime"></div>
+</header>
+
+<main>
+    <h1>Welcome to Arcade Hub</h1>
+    <nav>
+        <button onclick="location.href='tic-tac-toe.html'">Tic Tac Toe</button>
+        <button onclick="location.href='snake.html'">Snake</button>
+        <button onclick="location.href='tetris.html'">Tetris</button>
+        <button onclick="location.href='frogger.html'">Frogger</button>
+    </nav>
+</main>
+
+<script>
+function updateDateTime(){
+    const now = new Date();
+    document.getElementById('datetime').textContent = now.toLocaleString();
+}
+setInterval(updateDateTime,1000);
+updateDateTime();
+
+// Dropdown menu
+document.querySelector('.dropdown-btn').addEventListener('click', function(){
+    document.querySelector('.dropdown-content').classList.toggle('show');
+});
+window.addEventListener('click', function(e){
+    if(!e.target.matches('.dropdown-btn')){
+        document.querySelectorAll('.dropdown-content').forEach(dc => dc.classList.remove('show'));
+    }
+});
+</script>
+</body>
+</html>

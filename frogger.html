@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Frogger</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <div class="dropdown">
+        <button class="dropdown-btn">Home</button>
+        <div class="dropdown-content">
+            <a href="index.html">Home</a>
+            <a href="tic-tac-toe.html">Tic Tac Toe</a>
+            <a href="snake.html">Snake</a>
+            <a href="tetris.html">Tetris</a>
+            <a href="frogger.html">Frogger</a>
+        </div>
+    </div>
+    <div id="datetime"></div>
+</header>
+
+<main>
+    <h1>Frogger</h1>
+    <p>Controls: W = Up, A = Left, S = Down, D = Right</p>
+
+    <div id="froggerOverlay" class="game-over-overlay">
+        <div class="blink">GAME OVER</div>
+        <button id="restartFrogger">Restart</button>
+    </div>
+
+    <canvas id="froggerCanvas" width="400" height="400"></canvas>
+    <div>
+        <button id="startFrogger">Start Game</button>
+    </div>
+    <div id="froggerScore">Score: 0</div>
+</main>
+
+<script src="frogger.js"></script>
+<script>
+// Datum/tijd
+function updateDateTime(){
+    document.getElementById('datetime').textContent = new Date().toLocaleString();
+}
+setInterval(updateDateTime,1000);
+updateDateTime();
+
+// Dropdown
+document.querySelector('.dropdown-btn').addEventListener('click', function(){
+    document.querySelector('.dropdown-content').classList.toggle('show');
+});
+window.addEventListener('click', function(e){
+    if(!e.target.matches('.dropdown-btn')){
+        document.querySelectorAll('.dropdown-content').forEach(dc => dc.classList.remove('show'));
+    }
+});
+</script>
+
+</body>
+</html>
